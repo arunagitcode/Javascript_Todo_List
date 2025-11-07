@@ -1,7 +1,7 @@
 let displayList = document.getElementById("task-list");
 let todoList = [];
 
-// 🧠 Step 1: Load saved tasks when page loads
+
 window.onload = () => {
   let savedTasks = localStorage.getItem("todoList");
   if (savedTasks) {
@@ -22,7 +22,7 @@ const handleInput = () => {
   todoList.push({ id: Date.now(), task: inp, completed: false });
   inputElement.value = "";
 
-  // 🧠 Step 2: Save new task list to LocalStorage
+  
   localStorage.setItem("todoList", JSON.stringify(todoList));
 
   displayTasks();
@@ -47,7 +47,7 @@ const displayTasks = () => {
         .querySelector(".task-text")
         .classList.toggle("completed", task.completed);
 
-      // 🧠 Save after status update
+      
       localStorage.setItem("todoList", JSON.stringify(todoList));
     };
 
@@ -59,7 +59,7 @@ const displayTasks = () => {
     let btnGroup = document.createElement("div");
     btnGroup.className = "btn-group";
 
-    // ✏️ Edit Button
+  
     let editBtn = document.createElement("button");
     editBtn.className = "btn btn-sm btn-outline-primary";
     editBtn.textContent = "Edit";
@@ -85,14 +85,14 @@ const displayTasks = () => {
         inputElement.value = "";
         addBtn.disabled = false;
 
-        // 🧠 Save after edit
+        
         localStorage.setItem("todoList", JSON.stringify(todoList));
 
         displayTasks();
       };
     };
 
-    // 🗑 Delete Button
+    
     let deleteBtn = document.createElement("button");
     deleteBtn.className = "btn btn-sm btn-outline-danger";
     deleteBtn.textContent = "Delete";
@@ -107,7 +107,7 @@ const displayTasks = () => {
     displayList.appendChild(listItem);
   });
 
-  // Delete Confirmation Modal Logic
+  
   let taskToDelete = null;
 
   const deleteTaskWithModal = (taskId) => {
@@ -126,7 +126,7 @@ const displayTasks = () => {
         taskToDelete = null;
         displayTasks();
 
-        // 🧠 Save after delete
+        
         localStorage.setItem("todoList", JSON.stringify(todoList));
 
         const modalEl = document.getElementById("deleteModal");
